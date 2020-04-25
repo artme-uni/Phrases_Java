@@ -39,10 +39,10 @@ public abstract class Frequency {
         StringBuilder temp_str = new StringBuilder();
 
         int size = words.size();
-        for (int i = 0; i < size - repeatCount + 1; i++) {
+        for (int i = 0; i < size - phraseLength + 1; i++) {
 
             temp_str.setLength(0);
-            for (int j = 0; j < repeatCount; j++) {
+            for (int j = 0; j < phraseLength; j++) {
                 temp_str.append(words.get(j)).append(" ");
             }
 
@@ -52,7 +52,7 @@ public abstract class Frequency {
     }
     protected abstract void print_phrases();
 
-    public void phrases_count()
+    public void phrasesCounter()
     {
         try {
             Scanner s;

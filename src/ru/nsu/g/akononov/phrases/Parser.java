@@ -7,11 +7,11 @@ import java.util.List;
 public class Parser {
     static protected int phraseLength = 2;
     static protected int repeatCount = 2;
-    static String input;
+    static String inputFile;
 
     public static void parse(String[] args) {
 
-        if (args.length % 2 == 0 || args.length > 5 ||
+        if (args.length > 5 ||
                 (args.length == 1 && args[0].equals("-help"))) {
             help();
             System.exit(-1);
@@ -36,21 +36,22 @@ public class Parser {
             i++;
         }
 
-        if (arguments.size() != 1) {
+
+        if (arguments.size() > 1) {
             help();
             System.exit(-1);
         }
 
-        input = arguments.get(0);
-        if(input.equals("-"))
-            System.out.println("Type some text!");
-
+        if (arguments.size() == 0) {
+            inputFile = "-";
+        } else {
+            inputFile = arguments.get(0);
+        }
     }
-
 
     public static void help() {
         System.out.println("Expected input: ./program input.txt\n" +
-                "Standard input if not specified" +
+                "If input.txt not specified, stdin used\n\n" +
                 "Optional args: \n\t-n phrase_length\n" +
                 "\t-m repeat_count");
     }

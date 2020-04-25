@@ -8,8 +8,6 @@ import org.junit.Before;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import ru.nsu.g.akononov.phrases.*;
-
 public class FrequencyStreamTest {
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -23,10 +21,19 @@ public class FrequencyStreamTest {
     public void test3() {
         Frequency temp = new FrequencyStream("input/in1.txt", 3, 3);
 
-        temp.phrases_count();
+        temp.phrasesCounter();
 
         assertEquals("yellow submarine yellow (4)\n" +
                 "submarine yellow submarine (4)\n", output.toString());
+    }
+
+    @Test
+    public void test2() {
+        Frequency temp = new FrequencyStream("input/in3.txt", 3, 7);
+
+        temp.phrasesCounter();
+
+        assertEquals("abc abc abc (22)\n", output.toString());
     }
 
     @Test
@@ -34,7 +41,7 @@ public class FrequencyStreamTest {
         try {
             Frequency temp = new FrequencyStream("input/in2.txt", 3, 3);
 
-            temp.phrases_count();
+            temp.phrasesCounter();
 
         } catch (RuntimeException e) {
             assertEquals("java.lang.RuntimeException: Text length < required phrases length", e.toString());

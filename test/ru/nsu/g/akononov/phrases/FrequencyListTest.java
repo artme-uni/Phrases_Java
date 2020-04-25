@@ -8,8 +8,6 @@ import org.junit.Before;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import ru.nsu.g.akononov.phrases.Frequency;
-
 
 public class FrequencyListTest {
 
@@ -24,10 +22,19 @@ public class FrequencyListTest {
     public void test1() {
         Frequency temp = new FrequencyList("input/in1.txt", 3, 3);
 
-        temp.phrases_count();
+        temp.phrasesCounter();
 
         assertEquals("yellow submarine yellow (4)\n" +
                 "submarine yellow submarine (4)\n", output.toString());
+    }
+
+    @Test
+    public void test3() {
+        Frequency temp = new FrequencyList("input/in3.txt", 3, 7);
+
+        temp.phrasesCounter();
+
+        assertEquals("abc abc abc (22)\n", output.toString());
     }
 
     @Test
@@ -35,7 +42,7 @@ public class FrequencyListTest {
         try {
             Frequency temp = new FrequencyList("input/in2.txt", 3, 3);
 
-            temp.phrases_count();
+            temp.phrasesCounter();
 
         } catch (RuntimeException e) {
             assertEquals("java.lang.RuntimeException: Text length < required phrases length", e.toString());
