@@ -45,7 +45,7 @@ public class FrequencyListTest {
             temp.phrasesCounter();
 
         } catch (RuntimeException e) {
-            assertEquals("java.lang.RuntimeException: Text length < required phrases length", e.toString());
+            assertEquals("", e.toString());
         }
     }
 

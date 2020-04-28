@@ -30,12 +30,8 @@ public abstract class Frequency {
         }
     }
 
-    protected void WordsToPhrases() throws RuntimeException
+    protected void WordsToPhrases()
     {
-        if(words.size() < phraseLength) {
-            throw new RuntimeException("Text length < required phrases length");
-        }
-
         StringBuilder temp_str = new StringBuilder();
 
         int size = words.size();
